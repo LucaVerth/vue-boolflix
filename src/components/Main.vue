@@ -1,13 +1,25 @@
 <template>
   <main>
     <div class="container">
+      <Movies :movies="moviesList"/>
+      <Series/>
     </div>
   </main>
 </template>
 
 <script>
+import Movies from './Movies.vue'
+import Series from './Series.vue'
+
 export default {
   name: 'Main',
+  components:{
+    Movies,
+    Series
+  },
+  props:{
+    moviesList: Array
+  }
 }
 </script>
 
@@ -16,6 +28,6 @@ export default {
 @import '../assets/style/mixins.scss';
 main{
   background-color:#434343;
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
 }
 </style>

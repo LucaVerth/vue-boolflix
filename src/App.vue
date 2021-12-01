@@ -3,7 +3,9 @@
     <Header
     @search='searchTitle'
     />
-    <Main/>
+    <Main
+      :moviesList="titles"
+    />
   </div>
 </template>
 
@@ -37,8 +39,9 @@ export default {
         }
       })
         .then(response => {
-          console.log(response);
+          //console.log(response);
           this.titles = response.data.results;
+          console.log(this.titles);
         })
         .catch(error => {
           console.log(error);
