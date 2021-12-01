@@ -9,5 +9,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/style/vars.scss';
+@import '../assets/style/mixins.scss';
 
 </style>
