@@ -1,61 +1,73 @@
 <template>
   <div id="app">
-    <Header
-    @search='searchTitle'
-    />
-    <Main
-      :moviesList="titles"
+    <Header @search="searchTitle" />
+    <Main 
+      :moviesList="titlesMovies"
+      :tvshowList="titlesTv"
     />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
+import Header from "./components/Header.vue";
+import Main from "./components/Main.vue";
 import axios from "axios";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Header,
-    Main
+    Main,
   },
-  data(){
+  data() {
     return {
-      titles: [],
-      query: '',
-      api_url: 'https://api.themoviedb.org/3/search/movie',
-      api_key: '3ba064683997e5f14efec0c929a4546e',
-    }
+      titlesMovies: [],
+      titlesTv: [],
+      api_url_movie: "https://api.themoviedb.org/3/search/movie",
+      api_url_tvshow: "https://api.themoviedb.org/3/search/tv",
+      params: {
+        api_key: "3ba064683997e5f14efec0c929a4546e",
+        query: "",
+      },
+    };
   },
   methods: {
-    searchTitle(data){
+    // double axios call for both movies and tv series
+    searchTitle(data) {
       //console.log({data});
-      this.query = data;
-      axios.get(this.api_url,{
-        params: {
-          api_key: this.api_key,
-          query: this.query
-        }
-      })
-        .then(response => {
-          //console.log(response);
-          this.titles = response.data.results;
-          console.log(this.titles);
-        })
-        .catch(error => {
-          console.log(error);
-        })
-    }
+      this.params.query = data;
+
+      const movieRequest = axios.get(this.api_url_movie, {
+        params: this.params,
+      });
+      const tvShowRequest = axios.get(this.api_url_tvshow, {
+        params: this.params,
+      });
+
+      axios
+        .all([movieRequest, tvShowRequest])
+        .then(
+          axios.spread((...result) => {
+            this.titlesMovies = result[0].data.results;
+            this.titlesTv = result[1].data.results;
+
+            console.log(this.titlesMovies);
+            console.log(this.titlesTv);
+          })
+        )
+        .catch((error) => {
+          console.error(error);
+        });
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
-@import './assets/style/vars.scss';
-@import './assets/style/generals.scss';
-@import './assets/style/mixins.scss';
-#app{
+@import "./assets/style/vars.scss";
+@import "./assets/style/generals.scss";
+@import "./assets/style/mixins.scss";
+#app {
   min-height: 100vh;
 }
 </style>

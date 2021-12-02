@@ -2,7 +2,7 @@
   <main>
     <div class="container">
       <Movies :movies="moviesList"/>
-      <Series/>
+      <Series :tvshow="tvshowList"/>
     </div>
   </main>
 </template>
@@ -18,7 +18,8 @@ export default {
     Series
   },
   props:{
-    moviesList: Array
+    moviesList: Array,
+    tvshowList: Array,
   }
 }
 </script>
