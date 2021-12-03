@@ -1,20 +1,21 @@
 <template>
-   <div class="flip-card">
+  <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img 
+        <img
           v-if="sendTitle.poster_path"
-          :src="`https://image.tmdb.org/t/p/w342${sendTitle.poster_path}`" alt="" 
-        >
+          :src="`https://image.tmdb.org/t/p/w342${sendTitle.poster_path}`"
+          alt=""
+        />
         <p class="d-flex flex-column bg-light" v-else>
-          <span class="">{{sendTitle.name}}</span>
+          <span class="">{{ sendTitle.name }}</span>
           <span class="py-3">PLACEHOLDER IMG</span>
         </p>
       </div>
       <div class="flip-card-back">
-        <ul>
-          <li>{{sendTitle.name}}</li>
-          <li>{{sendTitle.original_name}}</li>
+        <ul class="d-flex flex-column align-items-baseline">
+          <li>{{ sendTitle.name }}</li>
+          <li>{{ sendTitle.original_name }}</li>
           <li>
             <strong>Lingua:</strong>
             <img
@@ -23,39 +24,46 @@
               :alt="sendTitle.original_language"
             />
           </li>
-          <li><strong>Voto: </strong>
+          <li>
+            <strong>Voto: </strong>
             <i
               v-for="(star, index) in 5"
-              :key="index" 
+              :key="index"
               class="fa-star"
-              :class="index < Math.round(sendTitle.vote_average/2) ? 'fas' : 'far'"
+              :class="
+                index < Math.round(sendTitle.vote_average / 2) ? 'fas' : 'far'
+              "
             ></i>
           </li>
-          <li><strong>Overview: </strong>{{sendTitle.overview}}</li>
+          <li><strong>Overview: </strong>{{ sendTitle.overview }}</li>
         </ul>
       </div>
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Seriescard',
+  name: "Seriescard",
   props: {
-    sendTitle: Object
-  }
-}
+    sendTitle: Object,
+  },
+  data() {
+    return {
+      langFlag: ["it", "en"],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 .flip-card {
   background-color: transparent;
-  height: 250px;
+  height: 450px;
   perspective: 1000px;
-  cursor: pointer; 
-  
+  cursor: pointer;
 }
 .flip-card-inner {
   position: relative;
@@ -68,7 +76,8 @@ export default {
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -79,7 +88,7 @@ export default {
   background-color: transparent;
   color: black;
 }
-.flip-card-front img{
+.flip-card-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -102,8 +111,7 @@ export default {
   width: 25px;
   margin: 10px;
 }
-.placeholder{
+.placeholder {
   background-color: #fff;
 }
-
 </style>

@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <Header @search="searchTitle" />
-    <Main 
-      :moviesList="titlesMovies"
-      :tvshowList="titlesTv"
-    />
+    <Main :moviesList="titlesMovies" :tvshowList="titlesTv" />
   </div>
 </template>
 

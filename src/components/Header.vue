@@ -2,22 +2,24 @@
   <header>
     <div class="container lv_container">
       <div class="logo text-uppercase">
-        <img :src="require(`../assets/img/boolflix-logo.png`)" alt="">
+        <img :src="require(`../assets/img/boolflix-logo.png`)" alt="" />
       </div>
       <div class="search">
         <div class="input-group mb-3">
-          <input 
-            type="text" 
-            class="form-control" 
+          <input
+            type="text"
+            class="form-control"
             placeholder="Search..."
             v-model="titleToSearch"
             @keyup.enter="$emit('search', titleToSearch)"
-          >
-          <button 
-            class="btn btn-outline-danger" 
+          />
+          <button
+            class="btn btn-outline-danger"
             type="button"
             @click="$emit('search', titleToSearch)"
-          >Search</button>
+          >
+            Search
+          </button>
         </div>
       </div>
     </div>
@@ -26,34 +28,32 @@
 
 <script>
 export default {
-  name: 'Header',
-  data(){
+  name: "Header",
+  data() {
     return {
-      titleToSearch: '',
-    }
-  }
-}
+      titleToSearch: "",
+    };
+  },
+};
 </script>
 
 <style lang="scss">
-@import '../assets/style/vars.scss';
-@import '../assets/style/mixins.scss';
+@import "../assets/style/vars.scss";
+@import "../assets/style/mixins.scss";
 
-header{
+header {
   background: linear-gradient(#000, rgba(0, 0, 0, 0.763));
   color: $primary-color;
-  .lv_container{
+  .lv_container {
     @include align();
     justify-content: space-between;
     height: 100px;
-    .logo{
+    .logo {
       width: 200px;
     }
-    .logo img{
+    .logo img {
       max-width: 100%;
     }
   }
 }
-
-
 </style>

@@ -1,6 +1,9 @@
 @import '~@fontsource/alegreya-sans/index.css';
 @import '~bootstrap/scss/bootstrap.scss';
 
+html{
+  scroll-behavior: smooth;
+}
 body { 
   font-family: $font;
 }

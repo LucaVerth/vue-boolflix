@@ -2,12 +2,13 @@
   <div class="flip-card">
     <div class="flip-card-inner">
       <div class="flip-card-front">
-        <img 
+        <img
           v-if="sendTitle.poster_path"
-          :src="`https://image.tmdb.org/t/p/w342${sendTitle.poster_path}`" alt="" 
-        >
+          :src="`https://image.tmdb.org/t/p/w342${sendTitle.poster_path}`"
+          alt=""
+        />
         <p class="d-flex flex-column bg-light" v-else>
-          <span class="">{{sendTitle.title}}</span>
+          <span class="">{{ sendTitle.title }}</span>
           <span class="py-3">PLACEHOLDER IMG</span>
         </p>
       </div>
@@ -25,15 +26,18 @@
               :alt="sendTitle.original_language"
             />
           </li>
-          <li><strong>Voto: </strong>
+          <li>
+            <strong>Voto: </strong>
             <i
               v-for="(star, index) in 5"
-              :key="index" 
+              :key="index"
               class="fa-star"
-              :class="index < Math.round(sendTitle.vote_average/2) ? 'fas' : 'far'"
+              :class="
+                index < Math.round(sendTitle.vote_average / 2) ? 'fas' : 'far'
+              "
             ></i>
           </li>
-          <li><strong>Overview: </strong>{{sendTitle.overview}}</li>
+          <li><strong>Overview: </strong>{{ sendTitle.overview }}</li>
         </ul>
       </div>
     </div>
@@ -59,7 +63,7 @@ export default {
 
 .flip-card {
   background-color: transparent;
-  height: 250px;
+  height: 450px;
   perspective: 1000px;
   cursor: pointer;
   margin: 10px;
@@ -93,7 +97,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 .flip-card-back {
   background-color: #000;
   color: white;
@@ -112,7 +115,7 @@ export default {
   width: 25px;
   margin: 10px;
 }
-.placeholder{
+.placeholder {
   background-color: #fff;
 }
 </style>
