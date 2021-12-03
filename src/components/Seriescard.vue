@@ -31,10 +31,7 @@
               :key="index"
               class="fa-star"
               :class="
-                index < Math.round(sendTitle.vote_average / 2) ? 'fas' : 'far'
-              "
-            ></i>
-          </li>
+                index < Math.round(sendTitle.vote_average / 2) ? 'fas' : 'far'"></i></li>
           <li><strong>Overview: </strong>{{ sendTitle.overview }}</li>
         </ul>
       </div>

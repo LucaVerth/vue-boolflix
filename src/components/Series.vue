@@ -2,7 +2,9 @@
   <section class="series">
     <h2 class="text-uppercase">Series</h2>
     <div class="container">
-      <div class="row titles_container">
+      <div 
+        class="row titles_container"
+      >
         <div
           class="col-sm-6 col-md-4 col-xl-3 series-cards"
           v-for="show in tvshow"

@@ -2,7 +2,9 @@
   <section class="movies">
     <h2 class="text-uppercase">Movies</h2>
     <div class="container">
-      <div class="row titles_container">
+      <div 
+        class="row titles_container"
+      >
         <div
           class="col-sm-6 col-md-4 col-xl-3 movie-cards"
           v-for="movie in movies"
