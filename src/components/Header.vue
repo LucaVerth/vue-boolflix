@@ -2,7 +2,7 @@
   <header>
     <div class="container lv_container">
       <div class="logo text-uppercase">
-        <h1>Boolflix</h1>
+        <img :src="require(`../assets/img/boolflix-logo.png`)" alt="">
       </div>
       <div class="search">
         <div class="input-group mb-3">
@@ -40,12 +40,18 @@ export default {
 @import '../assets/style/mixins.scss';
 
 header{
-  background-color: #000;
+  background: linear-gradient(#000, rgba(0, 0, 0, 0.763));
   color: $primary-color;
   .lv_container{
-  @include align();
-  justify-content: space-between;
-  height: 100px;
+    @include align();
+    justify-content: space-between;
+    height: 100px;
+    .logo{
+      width: 200px;
+    }
+    .logo img{
+      max-width: 100%;
+    }
   }
 }
 

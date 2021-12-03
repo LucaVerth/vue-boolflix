@@ -38,6 +38,7 @@ export default {
 .movies{
   h2{
     color: $primary-color;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5)
   }
   .movie-cards{
     margin: 10px;
