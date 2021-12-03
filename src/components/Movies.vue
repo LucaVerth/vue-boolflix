@@ -6,7 +6,7 @@
         class="row titles_container"
       >
         <div
-          class="col-sm-6 col-md-4 col-xl-3 movie-cards"
+          class="col-sm-12 col-md-4 col-xl-3 movie-cards"
           v-for="movie in movies"
           :key="movie.id"
         >
