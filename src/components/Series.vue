@@ -4,16 +4,13 @@
     <div class="container">
       <div class="row titles_container">
         <div 
-          class="col-sm-4 col-md-3 col-xl-2 movie-cards"
+          class="col-sm-4 col-md-3 col-xl-2 series-cards"
           v-for="show in tvshow"
           :key="show.id"
         >
-          <ul>
-            <li>{{show.name}}</li>
-            <li>{{show.original_name}}</li>
-            <li>{{show.original_language}}</li>
-            <li>{{show.vote_average}}</li>
-          </ul>
+        <Seriescard
+          :sendTitle="show"
+        />
         </div>
       </div>
     </div>
@@ -21,8 +18,13 @@
 </template>
 
 <script>
+import Seriescard from './Seriescard.vue'
+
 export default {
   name: 'Series',
+  components:{
+    Seriescard
+  },
   props:{
     tvshow: Array
   }
@@ -37,8 +39,7 @@ export default {
   h2{
     color: $primary-color;
   }
-  .movie-cards{
-    background-color: #fff;
+  .series-cards{
     margin: 10px;
   }
   .titles_container{

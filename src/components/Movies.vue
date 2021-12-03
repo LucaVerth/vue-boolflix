@@ -8,12 +8,9 @@
           v-for="movie in movies"
           :key="movie.id"
         >
-          <ul>
-            <li>{{movie.title}}</li>
-            <li>{{movie.original_title}}</li>
-            <li>{{movie.original_language}}</li>
-            <li>{{movie.vote_average}}</li>
-          </ul>
+        <Moviecard
+          :sendTitle="movie"
+        />
         </div>
       </div>
     </div>
@@ -21,8 +18,13 @@
 </template>
 
 <script>
+import Moviecard from './Moviecard.vue'
+
 export default {
   name: 'Movies',
+  components:{
+    Moviecard
+  },
   props:{
     movies: Array
   }
@@ -38,7 +40,6 @@ export default {
     color: $primary-color;
   }
   .movie-cards{
-    background-color: #fff;
     margin: 10px;
   }
   .titles_container{
